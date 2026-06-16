@@ -18,6 +18,9 @@ public class ObjectCreation {
 		
 		System.out.println(information2.getFirstName());
 		
+		UserInformation information3 = new UserInformation(3, "sdfdfs", "assdas", 6);
+		System.out.println(information3);
+		
 	}
 	
 	
