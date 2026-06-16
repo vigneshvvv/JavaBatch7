@@ -7,6 +7,17 @@ public class UserInformation {
 	private String lastName;
 	private int experience;
 	
+	public UserInformation() {
+		super();
+	}
+	public UserInformation(int id, String firstName, String lastName, int experience) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.experience = experience;
+	}
+	
 	public int getId() {
 		return id;
 	}
