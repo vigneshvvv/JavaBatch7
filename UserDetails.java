@@ -1,24 +1,22 @@
 package sample;
 
-public class UserInformation {
-
+public class UserDetails {
+	
 	private int id;
 	private String firstName;
 	private String lastName;
 	private int experience;
+	Address address;
 	
 	
-	public UserInformation() {
-		super();
-	}
-	public UserInformation(int id, String firstName, String lastName, int experience) {
+	public UserDetails(int id, String firstName, String lastName, int experience, Address address) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.experience = experience;
+		this.address = address;
 	}
-	
 	public int getId() {
 		return id;
 	}
@@ -43,10 +41,17 @@ public class UserInformation {
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
-
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	@Override
 	public String toString() {
-		return "UserInformation {id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", experience="
-				+ experience + "}";
+		return "UserDetails [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", experience="
+				+ experience + ", address=" + address + "]";
 	}
+
+
 }
