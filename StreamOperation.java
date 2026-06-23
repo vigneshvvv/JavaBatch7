@@ -2,7 +2,9 @@ package sample;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -11,12 +13,14 @@ public class StreamOperation {
 	public static void main(String[] args) {
 		StudentDetails details = new StudentDetails(101, "Revanth", 450);
 		StudentDetails details2 = new StudentDetails(102, "karthik", 460);
-		StudentDetails details3 = new StudentDetails(101, "Anand", 490);
+		StudentDetails details3 = new StudentDetails(104, "Anand", 490);
+		StudentDetails details5 = new StudentDetails(104, "Pradeep", 490);
 		
 		List<StudentDetails> studentDetailsList = new ArrayList<StudentDetails>();
 		studentDetailsList.add(details);
 		studentDetailsList.add(details2);
 		studentDetailsList.add(details3);
+		studentDetailsList.add(details5);
 		
 //		Stream with Filter Operation
 		List<StudentDetails> filtered = new ArrayList<StudentDetails>();
@@ -65,33 +69,31 @@ public class StreamOperation {
      Set<Integer> output= nums.stream().collect(Collectors.toSet());
      System.out.println(output);
      
-    List<Integer> sorted =  output.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList());
+    List<Integer> sorted =  output.stream().sorted(Collections.reverseOrder())
+    		.collect(Collectors.toList());
       System.out.println(sorted);
       
       
+      Map<Integer, Integer> resultMap = new HashMap<Integer, Integer>();
+      for (StudentDetails detailSample: studentDetailsList) {
+    	  if(resultMap.get(detailSample.getMarks()) == null) {
+    		  resultMap.put(detailSample.getMarks(), 1);
+    	  } else {
+//    		  int hashResult = resultMap.get(detailSample.getMarks());
+//    		  hashResult = hashResult+1;
+//    		  resultMap.put(detailSample.getMarks(), hashResult);
+    		  
+    		  resultMap.put(detailSample.getMarks(), 
+    				  resultMap.get(detailSample.getMarks())+1);
+    	  }
+      }
       
+      System.out.println(resultMap);
       
+      Map<Integer, Long> resultStream = studentDetailsList.stream()
+      .collect(Collectors.groupingBy(StudentDetails::getMarks, Collectors.counting()));
       
-      
-      
-      
-      
-      
-      
-      
-      
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+      System.out.println(resultStream); 
+	}	
 	
 }
