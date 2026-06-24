@@ -2,6 +2,7 @@ package sample;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,7 +94,18 @@ public class StreamOperation {
       Map<Integer, Long> resultStream = studentDetailsList.stream()
       .collect(Collectors.groupingBy(StudentDetails::getMarks, Collectors.counting()));
       
-      System.out.println(resultStream); 
-	}	
-	
-}
+      System.out.println(resultStream);
+     
+      
+      Map<String, StudentDetails> resultMapN =  studentDetailsList.stream()
+      .collect(Collectors.toMap(StudentDetails::getName, student -> student));
+      
+      System.out.println(resultMapN);
+      
+      List<StudentDetails> compSorted=   studentDetailsList.stream()
+      .sorted(Comparator.comparing(StudentDetails::getMarks))
+      .collect(Collectors.toList());
+      
+      System.out.println(compSorted);      
+      
+	}
